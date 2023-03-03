@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/loginTxt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
         android:layout_marginLeft="100dp"
         android:layout_weight="1"
         android:ems="10"
@@ -48,7 +48,7 @@
     <EditText
         android:id="@+id/passTxt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginLeft="100dp"
         android:layout_weight="1"
         android:ems="10"

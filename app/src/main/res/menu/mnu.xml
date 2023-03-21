@@ -3,12 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/firstItem"
-        android:title="Uzytkownik"
-        app:showAsAction="always"
-        />
+        android:title="Uzytkownik" />
     <item
         android:id="@+id/secondItem"
-        android:title="oceny"
-        app:showAsAction="always"
-        />
+        android:title="oceny" />
 </menu>

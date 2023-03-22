@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 
 class infoUzytkownik : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +19,7 @@ class infoUzytkownik : AppCompatActivity() {
         if(bundle!=null){
             val tytul = bundle.getString("name").toString() + " " + bundle.getString("pass").toString()
             supportActionBar!!.title = tytul
+            findViewById<TextView>(R.id.textView16).text = bundle.getString("name").toString() + " " + bundle.getString("pass").toString()
         }
 
     }

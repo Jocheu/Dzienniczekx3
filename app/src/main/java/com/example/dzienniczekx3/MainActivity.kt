@@ -13,19 +13,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var pass = findViewById<EditText>(R.id.passTxt).text.toString()
-        var login = findViewById<EditText>(R.id.loginTxt).text.toString()
+
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setIcon(R.drawable.trash)
+
 
         var loginButon = findViewById<Button>(R.id.loginButton)
         loginButon.setOnClickListener {
-            switchActivities(login)
+            var pass = findViewById<EditText>(R.id.passTxt).text.toString()
+            var login = findViewById<EditText>(R.id.loginTxt).text.toString()
+            switchActivities(login, pass)
         }
     }
 
-    fun switchActivities(x: String){
-        val newIntent = Intent(this, infoUzytkownik::class.java)
-        newIntent.putExtra("Username", x)
-        startActivity(newIntent)
+    fun switchActivities(imie: String, haslo:String){
+        val bundle = Bundle()
+        bundle.putString("name", imie)
+        bundle.putString("pass", haslo)
+        val intent = Intent(this, activity_oceny::class.java)
+        intent.putExtras(bundle)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,7 +41,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(intent.getStringExtra("Username")!=null){
+        val bundle = intent.extras
+        if(bundle!=null){
             val id = item.itemId
             if(id == R.id.firstItem){
                 val nowy = Intent(this,infoUzytkownik::class.java)

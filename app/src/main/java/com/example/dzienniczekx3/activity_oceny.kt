@@ -5,11 +5,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
+import android.widget.Toast
 
 class activity_oceny : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_oceny)
+
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setIcon(R.drawable.trash)
+
+        val bundle = intent.extras
+        if(bundle!=null){
+            val tytul = bundle.getString("name").toString() + " " + bundle.getString("pass").toString()
+            supportActionBar!!.title = tytul
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -19,13 +30,16 @@ class activity_oceny : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if(id == R.id.firstItem){
+        val bundle = intent.extras
+        if(id == R.id.firstItem && bundle!=null){
             val nowy = Intent(this,infoUzytkownik::class.java)
+            nowy.putExtras(bundle)
             startActivity(nowy)
             finish()
         }
-        else if (id == R.id.secondItem){
+        else if (id == R.id.secondItem && bundle!=null){
             val nowy = Intent(this,activity_oceny::class.java)
+            nowy.putExtras(bundle)
             startActivity(nowy)
             finish()
         }

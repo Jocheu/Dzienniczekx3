@@ -11,6 +11,15 @@ class infoUzytkownik : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info_uzytkownik)
 
+        supportActionBar!!.setDisplayShowHomeEnabled(true)
+        supportActionBar!!.setIcon(R.drawable.trash)
+
+        val bundle = intent.extras
+        if(bundle!=null){
+            val tytul = bundle.getString("name").toString() + " " + bundle.getString("pass").toString()
+            supportActionBar!!.title = tytul
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -20,13 +29,16 @@ class infoUzytkownik : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if(id == R.id.firstItem){
+        val bundle = intent.extras
+        if(id == R.id.firstItem && bundle!=null){
             val nowy = Intent(this,infoUzytkownik::class.java)
+            nowy.putExtras(bundle)
             startActivity(nowy)
             finish()
         }
-        else if (id == R.id.secondItem){
+        else if (id == R.id.secondItem && bundle!=null){
             val nowy = Intent(this,activity_oceny::class.java)
+            nowy.putExtras(bundle)
             startActivity(nowy)
             finish()
         }
